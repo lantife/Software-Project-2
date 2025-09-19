@@ -1,21 +1,19 @@
 #define PIN_LED 7
 #define PERIOD 1000
 
-int p;
 double repeat;
 
 void set_period(int period){
-  p=period;
-  repeat=5000.0/p;
+  repeat=5000.0/period;
 }
 
 void set_duty(int duty){
   double d=duty/100.0;
   for(int i=0;i<repeat;i++){
     digitalWrite(PIN_LED,0);
-    delayMicroseconds(p*d);
+    delayMicroseconds(PERIOD*d);
     digitalWrite(PIN_LED,1);
-    delayMicroseconds(p*(1-d));
+    delayMicroseconds(PERIOD*(1-d));
   }
 }
 
