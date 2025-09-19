@@ -1,4 +1,5 @@
 #define PIN_LED 7
+#define PERIOD 1000
 
 int p;
 double repeat;
@@ -21,7 +22,7 @@ void set_duty(int duty){
 void setup() {
   // put your setup code here, to run once:
   pinMode(PIN_LED,OUTPUT);
-  set_period(1000);
+  set_period(PERIOD);
 }
 
 void loop() {
