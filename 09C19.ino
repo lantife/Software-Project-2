@@ -55,7 +55,7 @@ void loop() {
   for(int i=0;i<len;i++){
     sorted_arr[i]=raw_arr[i];
   }
-//  qsort(sorted_arr,len,sizeof(int),cmp);
+
   for(int i=0,tmp;i<len;i++){
     for(int j=i+1;j<len;j++){
       if(sorted_arr[i]>sorted_arr[j]){
