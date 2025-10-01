@@ -16,14 +16,12 @@
 #define _EMA_ALPHA 0.5    // EMA weight of new sample (range: 0 to 1)
                           // Setting EMA to 1 effectively disables EMA filter.
 
-#define N 3
-
-
 // global variables
 unsigned long last_sampling_time;   // unit: msec
 float dist_prev = _DIST_MAX;        // Distance last-measured
 float dist_ema;                     // EMA distance
 
+const int N=3;
 int len=1,idx=0,raw_arr[N],sorted_arr[N],tmp;
 
 void setup() {
