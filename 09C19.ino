@@ -49,7 +49,18 @@ void loop() {
   // get a distance reading from the USS
   dist_raw = USS_measure(PIN_TRIG,PIN_ECHO);
 
-  dist_ema = _EMA_ALPHA*dist_raw+(1-_EMA_ALPHA)*dist_ema;
+  // Modify the below if-else statement to implement the range filter
+  if ((dist_raw == 0.0) || (dist_raw > _DIST_MAX)) {
+      dist_filtered = dist_prev;
+  } else if (dist_raw < _DIST_MIN) {
+      dist_filtered = dist_prev;
+  } else {    // In desired Range
+      dist_filtered = dist_raw;
+      dist_prev = dist_raw;
+  }
+
+  // Modify the below line to implement the EMA equation
+  dist_ema = _EMA_ALPHA*dist_filtered+(1-_EMA_ALPHA)*dist_ema;
   
   raw_arr[idx]=dist_raw;
   for(int i=0;i<len;i++){
